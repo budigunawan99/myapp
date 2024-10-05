@@ -34,11 +34,11 @@ class HomeScreen extends StatelessWidget {
             tooltip: 'Add Notes',
             child: const Icon(Icons.add, color: Colors.white, size: 28),
           ),
-          body: SingleChildScrollView(
-            child: LayoutBuilder(
-              builder: (BuildContext context, BoxConstraints constraints) {
-                if (noteProvider.getNotes.isEmpty) {
-                  return Padding(
+          body: LayoutBuilder(
+            builder: (BuildContext context, BoxConstraints constraints) {
+              if (noteProvider.getNotes.isEmpty) {
+                return SingleChildScrollView(
+                  child: Padding(
                     padding: const EdgeInsets.all(20),
                     child: Center(
                       child: Column(
@@ -51,20 +51,18 @@ class HomeScreen extends StatelessWidget {
                         ],
                       ),
                     ),
-                  );
+                  ),
+                );
+              } else {
+                if (constraints.maxWidth <= 600) {
+                  return NoteListView(noteProvider: noteProvider);
+                } else if (constraints.maxWidth <= 1200) {
+                  return NoteGridView(gridCount: 3, noteProvider: noteProvider);
                 } else {
-                  if (constraints.maxWidth <= 600) {
-                    return NoteListView(noteProvider: noteProvider);
-                  } else if (constraints.maxWidth <= 1200) {
-                    return NoteGridView(
-                        gridCount: 3, noteProvider: noteProvider);
-                  } else {
-                    return NoteGridView(
-                        gridCount: 5, noteProvider: noteProvider);
-                  }
+                  return NoteGridView(gridCount: 5, noteProvider: noteProvider);
                 }
-              },
-            ),
+              }
+            },
           ),
         );
       },

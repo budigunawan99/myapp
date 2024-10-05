@@ -1,6 +1,6 @@
-# myapp
+# uwunotes-flutter
 
-A new Flutter project.
+A simple Flutter app to store notes.
 
 ## Getting Started
 

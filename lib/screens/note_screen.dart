@@ -39,6 +39,13 @@ class _NoteScreenState extends State<NoteScreen> {
   }
 
   @override
+  void dispose() {
+    _titleController.dispose();
+    _contentController.dispose();
+    super.dispose();
+  }
+
+  @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: const Appbar(isFirstPage: false),

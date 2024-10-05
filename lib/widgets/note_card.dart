@@ -19,14 +19,22 @@ class NoteCard extends StatelessWidget {
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(
-            note.title,
-            style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+          Flexible(
+            flex: 1,
+            child: Text(
+              note.title,
+              style: const TextStyle(fontSize: 20, fontWeight: FontWeight.bold),
+              overflow: TextOverflow.ellipsis,
+            ),
           ),
           const SizedBox(height: 6),
-          Text(
-            note.content,
-            style: const TextStyle(fontSize: 14),
+          Flexible(
+            flex: 2,
+            child: Text(
+              note.content,
+              style: const TextStyle(fontSize: 14),
+              
+            ),
           ),
         ],
       ),
